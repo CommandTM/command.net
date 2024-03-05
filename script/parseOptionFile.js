@@ -88,7 +88,7 @@ function parseOptionFile(){
                         title.innerText = name
                         optionHolder.append(title)
                         let describe = document.createElement("p")
-                        describe.innerText = desc
+                        describe.innerHTML = desc
                         optionHolder.append(describe)
 
                         switch (type){

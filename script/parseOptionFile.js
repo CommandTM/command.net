@@ -111,6 +111,9 @@ function parseOptionFile(){
                                 slider.max = Number(rangeEnd)
                                 slider.value = Number(intialValue)
                                 sliderDisp.innerText = slider.value
+                                slider.oninput = function() {
+                                    sliderDisp.innerHTML = this.value
+                                }
                                 optionHolder.append(slider)
                                 optionHolder.append(sliderDisp)
                                 break

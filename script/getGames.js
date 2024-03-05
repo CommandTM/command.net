@@ -11,6 +11,5 @@ fetch("./assets/games.txt")
             option.value = game
             option.text = game.split(".")[0]
             document.getElementById("gameChooser").options.add(option)
-            console.log("Added " + game)
         })
     })

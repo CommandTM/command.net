@@ -7,7 +7,8 @@ document.getElementById("input").onchange = function (){
     var reader = new FileReader();
 
     reader.onload = function () {
-        output.innerText = this.result;
+        var text = this.result;
+        text.split("\n").forEach()
     }
 
     console.log("Reading File")

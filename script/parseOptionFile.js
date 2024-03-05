@@ -11,7 +11,7 @@ function parseOptionFile(){
                 var shatteredLine = string.split(" ")
                 shatteredLine.forEach((word) => {
                     if (word === "class"){
-                        document.getElementById("output").innerText += "\n" + string
+                        document.getElementById("output").innerText += (string + "\n")
                     }
                 })
             })

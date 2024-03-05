@@ -43,7 +43,7 @@ function parseOptionFile(){
                             let readingDesc = true
                             while (i < shatteredOptions.length){
                                 i++
-                                if (shatteredOptions[i] === "\r"){
+                                if (shatteredOptions[i] === ""){
                                     break
                                 }
                                 let check = shatteredOptions[i].split("=")

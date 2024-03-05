@@ -1,5 +1,5 @@
 function parseOptionFile(){
-    document.getElementById("output").innerHTML = ""
+    document.getElementById("output").innerText = ""
     var gameFile = document.getElementById("gameChooser").value
     console.log(gameFile)
 
@@ -11,9 +11,7 @@ function parseOptionFile(){
                 var shatteredLine = string.split(" ")
                 shatteredLine.forEach((word) => {
                     if (word === "class"){
-                        var paragraph = document.createElement("p")
-                        paragraph.innerText = string
-                        document.getElementById("output").append(paragraph)
+                        document.getElementById("output").innerText += "\n" + string
                     }
                 })
             })

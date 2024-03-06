@@ -38,6 +38,7 @@ function parseOptionFile(){
                         let intialValue = 0;
                         let rangeStart = 0;
                         let rangeEnd = 1;
+                        let options = []
 
                         if (isValidType(type)){
                             let readingDesc = true
@@ -63,6 +64,10 @@ function parseOptionFile(){
 
                                 if (check[0] === "    default "){
                                     intialValue = check[1].replaceAll(" ", "").replaceAll("\n", "")
+                                }
+
+                                if (check[0].split("_")[0] === "    option"){
+                                    options[Number(check[1].replaceAll(" ", "").replaceAll("\n\r", ""))] = check[0].split("ption_")[1]
                                 }
 
                                 if (check.length > 1){
@@ -117,6 +122,17 @@ function parseOptionFile(){
                                 optionHolder.append(slider)
                                 optionHolder.append(sliderDisp)
                                 break
+                            case "Choice":
+                                let optionSelect = document.createElement("select")
+                                options.forEach((option) => {
+                                    let newOption = document.createElement("option")
+                                    newOption.value = options.indexOf(option)
+                                    newOption.text = option
+                                    optionSelect.options.add(newOption)
+                                })
+                                optionSelect.selectedIndex = intialValue
+                                optionHolder.append(optionSelect)
+                                break
                         }
 
                         optionsDiv.append(optionHolder)
@@ -133,7 +149,9 @@ function isValidType(type){
         case "DefaultOnToggle":
             return true
         case "Range":
-            return true;
+            return true
+        case "Choice":
+            return true
         default:
             console.log("Option Type Not Supported")
             return false

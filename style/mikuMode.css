@@ -1,0 +1,13 @@
+@font-face {
+    font-family: Vocaloid;
+    src: url("../assets/fonts/VOC-RE.ttf");
+}
+
+miku {
+    font-family: Vocaloid;
+}
+
+body {
+    background-color: darkturquoise;
+    background-image: url("../assets/placeholders/miku.gif");
+}

@@ -1,0 +1,26 @@
+.random {
+   border-style: solid;
+    width: fit-content;
+}
+
+.randomButton {
+    align-items: center;
+}
+
+.slider {
+    overflow: hidden;
+}
+
+.sliderInput {
+    float: left
+}
+
+.sliderDisp {
+    float: left;
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+.choice {
+    margin-bottom: 16px;
+}

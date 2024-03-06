@@ -89,13 +89,24 @@ function parseOptionFile(){
                         desc = desc.replace(new RegExp("\r\n$"), "")
 
                         let optionHolder = document.createElement("div")
+                        optionHolder.className = "option"
                         let title = document.createElement("h4")
                         title.innerText = name
                         optionHolder.append(title)
                         let describe = document.createElement("p")
                         describe.innerHTML = desc
                         optionHolder.append(describe)
+                        let randomDiv = document.createElement("div")
+                        randomDiv.className = "random"
+                        let randomLabel = document.createElement("p")
+                        randomLabel.innerText = "Random"
+                        randomDiv.append(randomLabel)
+                        let randomButton = document.createElement("input")
+                        randomButton.className = "randomButton"
+                        randomButton.type = "checkbox"
+                        randomDiv.append(randomButton)
 
+                        let valid = true
                         switch (type){
                             case "Toggle":
                                 let checkbox = document.createElement("input")
@@ -109,8 +120,12 @@ function parseOptionFile(){
                                 optionHolder.append(checkboxOn)
                                 break
                             case "Range":
+                                let sliderHolder = document.createElement("div")
+                                sliderHolder.className = "slider"
                                 let slider = document.createElement("input")
+                                slider.className = "sliderInput"
                                 let sliderDisp = document.createElement("p")
+                                sliderDisp.className = "sliderDisp"
                                 slider.type = "range"
                                 slider.min = Number(rangeStart)
                                 slider.max = Number(rangeEnd)
@@ -119,11 +134,13 @@ function parseOptionFile(){
                                 slider.oninput = function() {
                                     sliderDisp.innerHTML = this.value
                                 }
-                                optionHolder.append(slider)
-                                optionHolder.append(sliderDisp)
+                                sliderHolder.append(slider)
+                                sliderHolder.append(sliderDisp)
+                                optionHolder.append(sliderHolder)
                                 break
                             case "Choice":
                                 let optionSelect = document.createElement("select")
+                                optionSelect.className = "choice"
                                 options.forEach((option) => {
                                     let newOption = document.createElement("option")
                                     newOption.value = options.indexOf(option)
@@ -133,9 +150,15 @@ function parseOptionFile(){
                                 optionSelect.selectedIndex = intialValue
                                 optionHolder.append(optionSelect)
                                 break
+                            default:
+                                valid = false
+                                break
                         }
 
-                        optionsDiv.append(optionHolder)
+                        if (valid){
+                            optionHolder.append(randomDiv)
+                            optionsDiv.append(optionHolder)
+                        }
                     }
                 }
             }

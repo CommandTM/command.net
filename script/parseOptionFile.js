@@ -1,12 +1,19 @@
 const optionsDiv = document.getElementById("optionsDiv")
 const output = document.getElementById("output")
+var optionDefs
+var gameFile
+
+document.getElementById("progbalDisp").innerHTML = 50;
+document.getElementById("progbalSlider").oninput = function(){
+    document.getElementById("progbalDisp").innerHTML = this.value
+}
 
 function parseOptionFile(){
     optionsDiv.innerHTML = ""
 
     console.log("Parsing Option File")
     document.getElementById("output").innerText = ""
-    let gameFile = document.getElementById("gameChooser").value
+    gameFile = document.getElementById("gameChooser").value
     console.log("Loading " + gameFile)
 
     fetch("./assets/Options/" + gameFile)
@@ -30,6 +37,7 @@ function parseOptionFile(){
                         console.log("Found A Class")
                         k++
                         let type = shatteredLine[k].split("(")[1]
+                        let id = shatteredLine[k].split("(")[0].replaceAll(" ", "")
                         type = type.split(")")[0]
 
                         console.log("Detected A " + type + " Class")
@@ -90,6 +98,7 @@ function parseOptionFile(){
                         desc = desc.replace(new RegExp("\r\n$"), "")
 
                         let optionHolder = document.createElement("div")
+                        optionHolder.id = id
                         optionHolder.className = "option"
                         let title = document.createElement("h4")
                         title.innerText = name
@@ -161,20 +170,12 @@ function parseOptionFile(){
                         }
                     }
 
-                    if (shatteredOptions[i] === "@dataclass\r"){
-                        i++
-                        output.innerText += "game: " + gameFile.split(".txt")[0] + "\n"
-                        output.innerText += gameFile.split(".txt")[0] + ":"
-                        while (i < shatteredOptions.length){
-                            i++
-                            let option = shatteredOptions[i].split(":")[0].replaceAll(" ", "")
-                            console.log(option)
-                        }
+                    if (shatteredOptions[i] === "@dataclass\r") {
+                        optionDefs = i;
                     }
                 }
             }
-        })
-}
+        })}
 
 function isValidType(type){
     switch (type) {
@@ -190,4 +191,36 @@ function isValidType(type){
             console.log("Option Type Not Supported")
             return false
     }
+}
+
+function generate(){
+    output.innerText = ""
+    fetch("./assets/Options/" + gameFile)
+        .then(response => response.text())
+        .then(text => {
+            shatteredOptions = text.split("\n")
+
+            output.innerText += "game: " + gameFile.split(".txt")[0] + "\n"
+            let nameOpt = document.getElementById("name")
+            let name = nameOpt.getElementsByTagName("input")[0]
+            output.innerText += "description: 'Generated on command.net'\n"
+            output.innerText += "name: " + name.value + "\n"
+            output.innerText += gameFile.split(".txt")[0] + ":\n"
+
+            let i = optionDefs+1
+            while (i < shatteredOptions.length){
+                i++
+                if (shatteredOptions[i] === ""){
+                    break
+                }
+                let option = shatteredOptions[i].split(":")[0].replaceAll(" ", "")
+                let input = getOption(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", ""))
+                output.innerHTML += ("  " + option + ": " + input + "\n")
+            }
+        })
+}
+
+function getOption(id){
+    let div = document.getElementById(id)
+    return div.getElementsByTagName("select")[0].selectedOptions[0].text
 }

@@ -12,25 +12,25 @@
     <button id="gameSubmit" onclick="parseOptionFile()">Submit</button>
 </div>
 <options id="genericOptions">
-    <div class="option">
+    <div class="option" id="name">
         <h4>Name</h4>
         <p>The name of your slot</p>
         <input type="text" maxlength="16">
     </div>
-    <div class="option">
+    <div class="option" id="progression_balancing">
         <h4>Progression Balancing</h4>
         <p>A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.<br>
             A lower setting means more getting stuck. A higher setting means less getting stuck.</p>
         <div class="slider">
-            <input class="sliderInput" type="range" min="0" max="99" value="50">
-            <p class = sliderDisp></p>
+            <input class="sliderInput" type="range" min="0" max="99" value="50" id="progbalSlider">
+            <p class = sliderDisp id="progbalDisp"></p>
         </div>
         <div class="random">
             <p>Random</p>
             <input class="randomButton" type="checkbox">
         </div>
     </div>
-    <div class="option">
+    <div class="option" id="accessibility">
         <h4>Accessibility</h4>
         <p>Set rules for reachability of your items/locations.<br>
             Locations: ensure everything can be reached and acquired.<br>
@@ -39,12 +39,18 @@
         </p>
         <select class="choice">
             <option>Locations</option>
-            <option></option>
+            <option selected>Items</option>
+            <option>Minimal</option>
         </select>
+        <div class="random">
+            <p>Random</p>
+            <input class="randomButton" type="checkbox">
+        </div>
     </div>
 </options>
 <options id="optionsDiv"></options>
-<p id="output"></p>
+<button onclick="generate()">Generate</button>
+<pre><p id="output"></p></pre>
 
 </body>
 <script src="script/getGames.js"></script>

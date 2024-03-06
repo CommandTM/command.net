@@ -199,19 +199,23 @@ function generate(){
         .then(response => response.text())
         .then(text => {
             shatteredOptions = text.split("\n")
-
             output.innerText += "game: " + gameFile.split(".txt")[0] + "\n"
             let nameOpt = document.getElementById("name")
             let name = nameOpt.getElementsByTagName("input")[0]
             output.innerText += "description: 'Generated on command.net'\n"
             output.innerText += "name: " + name.value + "\n"
             output.innerText += gameFile.split(".txt")[0] + ":\n"
+            output.innerHTML += ("  progression_balancing: " + getOption("progression_balancing") + "\n")
+            output.innerHTML += ("  accessibility: " + getOption("accessibility") + "\n")
 
             let i = optionDefs+1
             while (i < shatteredOptions.length){
                 i++
                 if (shatteredOptions[i] === ""){
                     break
+                }
+                if (!checkOptionExists(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", ""))){
+                    continue
                 }
                 let option = shatteredOptions[i].split(":")[0].replaceAll(" ", "")
                 let input = getOption(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", ""))
@@ -222,5 +226,21 @@ function generate(){
 
 function getOption(id){
     let div = document.getElementById(id)
-    return div.getElementsByTagName("select")[0].selectedOptions[0].text
+    if (div.getElementsByTagName("select").length > 0){
+        return div.getElementsByTagName("select")[0].selectedOptions[0].text
+    } else if (div.getElementsByTagName("input").length > 0) {
+        if (div.getElementsByTagName("input")[0].type !== "checkbox"){
+            return div.getElementsByTagName("input")[0].value
+        } else {
+            if (div.getElementsByTagName("input")[0].checked){
+                return "'true'"
+            } else {
+                return "'false'"
+            }
+        }
+    }
+}
+
+function checkOptionExists(id){
+    return (document.getElementById(id) != null)
 }

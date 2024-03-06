@@ -170,7 +170,7 @@ function parseOptionFile(){
                         }
                     }
 
-                    if (shatteredOptions[i] === "@dataclass\r") {
+                    if (shatteredOptions[i] === "@dataclass\r" || shatteredOptions[i] === "@dataclass") {
                         optionDefs = i;
                     }
                 }

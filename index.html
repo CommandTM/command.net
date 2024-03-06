@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head id="head">
     <meta charset="UTF-8">
     <title>Command Center</title>
-    <link rel="stylesheet" href="style/mikuMode.css">
 </head>
 <body>
 
 <miku>
-    <h1>It's Me, Hatsune Miku! Welcome To My Website!</h1>
+    <h1 id="introHeader">It's Me, Command! Welcome To My Website!</h1>
+    <button onclick="activateMikuMode()" id="mikuModeButton">Activate Miku Mode</button>
 </miku>
 <ap>
     <h3>Generate Archipelago YAMLs For Select Unsupported Games Here!</h3>
@@ -17,3 +17,4 @@
 
 </body>
 </html>
+<script src="script/activateMikuMode.js"></script>

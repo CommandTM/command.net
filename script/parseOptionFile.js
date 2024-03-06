@@ -1,4 +1,5 @@
 const optionsDiv = document.getElementById("optionsDiv")
+const output = document.getElementById("output")
 
 function parseOptionFile(){
     optionsDiv.innerHTML = ""
@@ -152,12 +153,22 @@ function parseOptionFile(){
                                 break
                             default:
                                 valid = false
-                                break
                         }
 
                         if (valid){
                             optionHolder.append(randomDiv)
                             optionsDiv.append(optionHolder)
+                        }
+                    }
+
+                    if (shatteredOptions[i] === "@dataclass\r"){
+                        i++
+                        output.innerText += "game: " + gameFile.split(".txt")[0] + "\n"
+                        output.innerText += gameFile.split(".txt")[0] + ":"
+                        while (i < shatteredOptions.length){
+                            i++
+                            let option = shatteredOptions[i].split(":")[0].replaceAll(" ", "")
+                            console.log(option)
                         }
                     }
                 }

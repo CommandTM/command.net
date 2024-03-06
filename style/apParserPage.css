@@ -24,3 +24,9 @@
 .choice {
     margin-bottom: 16px;
 }
+
+#output {
+    border-style: solid;
+    width: fit-content;
+    height: fit-content;
+}

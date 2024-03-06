@@ -11,8 +11,40 @@
     <select id="gameChooser">Select A Game</select>
     <button id="gameSubmit" onclick="parseOptionFile()">Submit</button>
 </div>
-<p id="output"></p>
+<options id="genericOptions">
+    <div class="option">
+        <h4>Name</h4>
+        <p>The name of your slot</p>
+        <input type="text" maxlength="16">
+    </div>
+    <div class="option">
+        <h4>Progression Balancing</h4>
+        <p>A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.<br>
+            A lower setting means more getting stuck. A higher setting means less getting stuck.</p>
+        <div class="slider">
+            <input class="sliderInput" type="range" min="0" max="99" value="50">
+            <p class = sliderDisp></p>
+        </div>
+        <div class="random">
+            <p>Random</p>
+            <input class="randomButton" type="checkbox">
+        </div>
+    </div>
+    <div class="option">
+        <h4>Accessibility</h4>
+        <p>Set rules for reachability of your items/locations.<br>
+            Locations: ensure everything can be reached and acquired.<br>
+            Items: ensure all logically relevant items can be acquired.<br>
+            Minimal: ensure what is needed to reach your goal can be acquired.
+        </p>
+        <select class="choice">
+            <option>Locations</option>
+            <option></option>
+        </select>
+    </div>
+</options>
 <options id="optionsDiv"></options>
+<p id="output"></p>
 
 </body>
 <script src="script/getGames.js"></script>

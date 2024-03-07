@@ -213,9 +213,6 @@ function generate(){
             let i = optionDefs+1
             while (i < shatteredOptions.length){
                 i++
-                if (shatteredOptions[i] === ""){
-                    break
-                }
                 try {
                     if (!checkOptionExists(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", "").replaceAll(",", ""))){
                         continue

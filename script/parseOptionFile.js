@@ -53,7 +53,7 @@ function parseOptionFile(){
                             let readingDesc = true
                             while (i < shatteredOptions.length){
                                 i++
-                                if (shatteredOptions[i] === "" || shatteredOptions[i] === "\r"){
+                                if ((shatteredOptions[i] === "" || shatteredOptions[i] === "\r") && !readingDesc){
                                     break
                                 }
                                 let check = shatteredOptions[i].split("=")
@@ -216,7 +216,11 @@ function generate(){
                 if (shatteredOptions[i] === ""){
                     break
                 }
-                if (!checkOptionExists(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", "").replaceAll(",", ""))){
+                try {
+                    if (!checkOptionExists(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", "").replaceAll(",", ""))){
+                        continue
+                    }
+                } catch(err){
                     continue
                 }
                 let option = shatteredOptions[i].split(":")[0].replaceAll("\"", "").replaceAll(" ", "").replaceAll(",", "")

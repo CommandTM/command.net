@@ -170,7 +170,9 @@ function parseOptionFile(){
                         }
                     }
 
-                    if (shatteredOptions[i] === "@dataclass\r" || shatteredOptions[i] === "@dataclass") {
+                    if (shatteredOptions[i] === "@dataclass\r" || shatteredOptions[i] === "@dataclass" ||
+                    shatteredOptions[i].split("_")[1] === "options = {\r" ||
+                        shatteredOptions[i].split("_")[1] === "options = {") {
                         optionDefs = i;
                     }
                 }
@@ -214,11 +216,11 @@ function generate(){
                 if (shatteredOptions[i] === ""){
                     break
                 }
-                if (!checkOptionExists(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", ""))){
+                if (!checkOptionExists(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", "").replaceAll(",", ""))){
                     continue
                 }
-                let option = shatteredOptions[i].split(":")[0].replaceAll(" ", "")
-                let input = getOption(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", ""))
+                let option = shatteredOptions[i].split(":")[0].replaceAll("\"", "").replaceAll(" ", "").replaceAll(",", "")
+                let input = getOption(shatteredOptions[i].split(":")[1].replaceAll(" ", "").replaceAll("\r", "").replaceAll(",", ""))
                 output.innerHTML += ("  " + option + ": " + input + "\n")
             }
         })

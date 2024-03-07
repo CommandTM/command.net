@@ -229,6 +229,9 @@ function generate(){
 
 function getOption(id){
     let div = document.getElementById(id)
+    if (div.getElementsByClassName("randomButton")[0].checked){
+        return "random"
+    }
     if (div.getElementsByTagName("select").length > 0){
         return div.getElementsByTagName("select")[0].selectedOptions[0].text
     } else if (div.getElementsByTagName("input").length > 0) {

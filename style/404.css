@@ -1,0 +1,8 @@
+div {
+    background-image: url("../assets/placeholders/404.gif");
+    height: 640px;
+    width: 360px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

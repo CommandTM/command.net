@@ -1,10 +1,15 @@
 .random {
    border-style: solid;
     width: fit-content;
+    text-align: center;
 }
 
 .randomButton {
     align-items: center;
+}
+
+.randomText {
+    margin: 0px;
 }
 
 .slider {

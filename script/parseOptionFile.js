@@ -109,6 +109,7 @@ function parseOptionFile(){
                         let randomDiv = document.createElement("div")
                         randomDiv.className = "random"
                         let randomLabel = document.createElement("p")
+                        randomLabel.className = "randomText"
                         randomLabel.innerText = "Random"
                         randomDiv.append(randomLabel)
                         let randomButton = document.createElement("input")

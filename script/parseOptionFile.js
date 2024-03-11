@@ -10,6 +10,8 @@ document.getElementById("progbalSlider").oninput = function(){
 
 function parseOptionFile(){
     optionsDiv.innerHTML = ""
+    document.getElementById("download").hidden = true
+    output.hidden = true
 
     console.log("Parsing Option File")
     document.getElementById("output").innerText = ""
@@ -178,7 +180,9 @@ function parseOptionFile(){
                     }
                 }
             }
-        })}
+        })
+document.getElementById("generate").hidden = false;
+}
 
 function isValidType(type){
     switch (type) {
@@ -198,6 +202,13 @@ function isValidType(type){
 
 function generate(){
     output.innerText = ""
+    output.hidden = false;
+
+    if (document.getElementById("name").getElementsByTagName("input")[0].value === ""){
+        output.innerText = "Please Enter A Name"
+        return
+    }
+
     fetch("./assets/Options/" + gameFile)
         .then(response => response.text())
         .then(text => {
@@ -226,6 +237,7 @@ function generate(){
                 output.innerHTML += ("  " + option + ": " + input + "\n")
             }
         })
+    document.getElementById("download").hidden = false
 }
 
 function getOption(id){

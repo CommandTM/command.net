@@ -5,10 +5,11 @@ import {
 } from "https://unpkg.com/archipelago.js@1.0.0/dist/archipelago.js"
 
 const client = new Client()
-const game = "Manual_Taiko-noTatsujinWii_Command"
+const game = "Manual_TaikonoTatsujinWii_Command"
 const syncPacket = {
     cmd: CLIENT_PACKET_TYPE.SYNC
 }
+const output = document.getElementById("locations")
 
 var receivedItems
 
@@ -50,9 +51,9 @@ function update(){
 
     document.getElementById("locations").innerText = ""
     let locations = []
-    let locationIDs = client.locations.missing
+    let locationIDs = client.locations.checked
     for (let i = 0; i < locationIDs.length; i++){
-        locations.push(client.locations.name(game, locationIDs[i]).split(" - 0")[0])
+        locations.push(client.locations.name(game, locationIDs[i]))
     }
 
     let items = []
@@ -66,9 +67,21 @@ function update(){
         }
 
         for (let i = 0; i < locations.length; i++){
-            if (locations[i].split(" - ").length <= 1){
+            if (locations[i].split(" - 1").length <= 1){
                 if (items.includes(locations[i].split(" - 0")[0])){
-                    document.getElementById("locations").innerText += (locations[i].split(" - 0")[0] + "\n")
+                    let container = document.createElement("div")
+                    let song = document.createElement("p")
+                    let checkButton = document.createElement("button")
+                    let id = client.locations.id(game, locations[i])
+                    container.className = "center"
+                    song.innerText = (locations[i].split(" - 0")[0] + "\n")
+                    song.id = id
+                    song.className = "checkButton"
+                    checkButton.innerText = "Done"
+                    checkButton.className = "checkButton"
+                    container.append(song)
+                    container.append(checkButton)
+                    output.append(container)
                 }
             }
         }
@@ -76,6 +89,11 @@ function update(){
     client.send(syncPacket)
 }
 document.getElementById("updateButton").onclick = update
+
+function sendCheck(){
+    let id = document.parentElement.getElementsByTagName("p")[0].id
+    client.locations.check(id, id+1)
+}
 
 window.addEventListener("beforeunload", () => {
     client.disconnect()

@@ -1,0 +1,15 @@
+#connectInfo {
+    border-style: solid;
+    width: fit-content;
+    text-align: center;
+    overflow: hidden;
+    margin: auto;
+}
+
+.floatLeft {
+    float: left;
+}
+
+#connectButton {
+    margin: auto;
+}

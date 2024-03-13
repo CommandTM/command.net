@@ -5,7 +5,7 @@ import {
 } from "https://unpkg.com/archipelago.js@1.0.0/dist/archipelago.js"
 
 const client = new Client()
-const game = "Manual_TaikonoTatsujinWii_Command"
+const game = "Manual_Taiko-noTatsujinWii_Command"
 const syncPacket = {
     cmd: CLIENT_PACKET_TYPE.SYNC
 }
@@ -37,6 +37,7 @@ function connect(){
     client.connect(connectionInfo)
         .then(() => {
             document.getElementById("updateButton").hidden = false
+            setInterval(update, 60000)
             update()
         })
         .catch((error) => {

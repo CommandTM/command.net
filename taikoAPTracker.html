@@ -3,25 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Taiko!</title>
+    <link rel="stylesheet" href="style/taikoTracker.css">
 </head>
 <body>
 <div id="connectInfo">
     <div>
-        <h4>Server IP</h4>
-        <input type="text" id="ip">
-    </div>
-    <div>
-        <h4>Server Port</h4>
-        <input type="number" id="port">
-    </div>
-    <div>
-        <h4>Slot Name</h4>
-        <input type="text" id="name">
+        <div class="floatLeft">
+            <div class="floatLeft">
+                <h4>Server IP</h4>
+                <input type="text" id="ip">
+            </div>
+            <div class="floatLeft">
+                <h4>Server Port</h4>
+                <input type="number" id="port">
+            </div>
+            <div class="floatLeft">
+                <h4>Slot Name</h4>
+                <input type="text" id="name">
+            </div>
+        </div>
     </div>
     <button id="connectButton">Connect</button>
 </div>
-<p id="locations"></p>
-<button id="updateButton" hidden="hidden">Update</button>
+<center>
+    <button id="updateButton" hidden="hidden">Update</button>
+    <p id="locations"></p>
+</center>
 </body>
 <script src="script/activateMikuMode.js"></script>
 <script type="module" src="script/taikoAPTracker.js"></script>

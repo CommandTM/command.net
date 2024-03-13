@@ -5,7 +5,7 @@ import {
 } from "https://unpkg.com/archipelago.js@1.0.0/dist/archipelago.js"
 
 const client = new Client()
-const game = "Manual_TaikonoTatsujinWii_Command"
+const game = "Manual_Taiko-noTatsujinWii_Command"
 const syncPacket = {
     cmd: CLIENT_PACKET_TYPE.SYNC
 }
@@ -51,7 +51,7 @@ function update(){
 
     document.getElementById("locations").innerText = ""
     let locations = []
-    let locationIDs = client.locations.checked
+    let locationIDs = client.locations.missing
     for (let i = 0; i < locationIDs.length; i++){
         locations.push(client.locations.name(game, locationIDs[i]))
     }
@@ -79,6 +79,7 @@ function update(){
                     song.className = "checkButton"
                     checkButton.innerText = "Done"
                     checkButton.className = "checkButton"
+                    checkButton.onclick = sendCheck
                     container.append(song)
                     container.append(checkButton)
                     output.append(container)
@@ -91,8 +92,9 @@ function update(){
 document.getElementById("updateButton").onclick = update
 
 function sendCheck(){
-    let id = document.parentElement.getElementsByTagName("p")[0].id
+    let id = this.parentElement.getElementsByTagName("p")[0].id
     client.locations.check(id, id+1)
+    update()
 }
 
 window.addEventListener("beforeunload", () => {

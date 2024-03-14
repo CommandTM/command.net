@@ -10,6 +10,17 @@
     float: left;
 }
 
+.checkButton {
+    float: left;
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+.center {
+    margin: auto;
+    width: fit-content;
+}
+
 #connectButton {
     margin: auto;
 }

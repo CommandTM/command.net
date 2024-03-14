@@ -54,6 +54,12 @@ function parseOptionFile(){
                         if (isValidType(type)){
                             let readingDesc = true
                             while (i < shatteredOptions.length){
+                                if (type === "DeathLink"){
+                                    name = "Death Link"
+                                    desc = "When you die, everyone dies. Of course the reverse is true too."
+                                    type = "Toggle"
+                                    break
+                                }
                                 i++
                                 if ((shatteredOptions[i] === "" || shatteredOptions[i] === "\r") && !readingDesc){
                                     break
@@ -193,6 +199,8 @@ function isValidType(type){
         case "Range":
             return true
         case "Choice":
+            return true
+        case "DeathLink":
             return true
         default:
             console.log("Option Type Not Supported")

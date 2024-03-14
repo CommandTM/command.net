@@ -79,7 +79,10 @@ function update(){
                     song.className = "checkButton"
                     checkButton.innerText = "Done"
                     checkButton.className = "checkButton"
-                    checkButton.onclick = sendCheck
+                    checkButton.onclick = function(){
+                        client.locations.check(id)
+                        update()
+                    }
                     container.append(song)
                     container.append(checkButton)
                     output.append(container)
@@ -91,8 +94,7 @@ function update(){
 }
 document.getElementById("updateButton").onclick = update
 
-function sendCheck(){
-    let id = this.parentElement.getElementsByTagName("p")[0].id
+function sendCheck(id){
     client.locations.check(id, id+1)
     update()
 }

@@ -1,12 +1,17 @@
 .window {
     position: absolute;
-    background: lightgray;
 }
 
 .windowTab {
+    cursor: move;
     position: absolute;
     background: grey;
     border: grey;
+}
+
+.windowContent {
+    position: relative;
+    border: black;
 }
 
 #theBigButton {

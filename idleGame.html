@@ -7,14 +7,16 @@
 </head>
 <body>
 
-<button style="width: 300px; height: 10px" class="windowTab" id="buttonWindowTab"></button>
-<div class="window" style="width: 300px; height: 300px; top:100px" id="buttonWindow">
-    <button onclick="test()" id="theBigButton">
-        <img src="assets/gameAssets/theButton.png">
-    </button>
+<div class="window" id="buttonWindow">
+    <div style="width: 300px; height: 10px" class="windowTab" id="buttonWindowTab"></div>
+    <div style="width: 300px; height: 300px; top: 10px" class="windowContent">
+        <button onclick="test()" id="theBigButton">
+            <img src="assets/gameAssets/theButton.png">
+        </button>
+    </div>
 </div>
 
 </body>
-<script src="script/gameScripts/main.js"></script>
 <script src="script/gameScripts/window.js"></script>
+<script src="script/gameScripts/main.js"></script>
 </html>

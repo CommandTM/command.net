@@ -14,6 +14,7 @@ function dragElement(element){
 function dragMouseDown(e){
     e = e || window.event
     e.preventDefault()
+    obj = document.getElementById(document.elementFromPoint(e.clientX, e.clientY).id.split("Tab")[0])
     pos3 = e.clientX
     pos4 = e.clientY
     document.onmouseup = closeDragElement

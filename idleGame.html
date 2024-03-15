@@ -9,14 +9,47 @@
 
 <div class="window" id="buttonWindow">
     <div style="width: 300px; height: 10px" class="windowTab" id="buttonWindowTab"></div>
-    <div style="width: 300px; height: 300px; top: 10px" class="windowContent">
-        <button onclick="test()" id="theBigButton">
+    <div style="width: 300px; height: 300px; top: 10px" class="windowContent" id="intervalDisplay">
+        <p class="removeMargins" id="workerDisplay"></p>
+        <button onclick="increment()" id="theBigButton">
             <img src="assets/gameAssets/theButton.png">
         </button>
     </div>
 </div>
 
+<div class="window" id="moneyWindow" style="left: 300px">
+    <div style="width: 200px; height: 10px" class="windowTab" id="moneyWindowTab"></div>
+    <div style="width: 200px; height: 75px; top: 10px" class="windowContent">
+        <p class="marginRemove" id="moneyDisplay">$</p>
+        <p class="marginRemove" id="amountDisplay">Amount:</p>
+        <p class="marginRemove" id="multDisplay">Mult:</p>
+    </div>
+</div>
+
+<div class="window" id="storeWindow" style="left: 500px">
+    <div style="width: 300px; height: 10px" class="windowTab" id="storeWindowTab"></div>
+    <div style="width: 300px; height: 500px; top: 10px" class="windowContent">
+        <div>
+            <p class="floatLeft">Purchase Amount ($100)</p>
+            <button onclick="purchaseAmount()" class="floatRight">Buy</button>
+        </div>
+        <div>
+            <p class="floatLeft" id="multText" hidden="hidden">Purchase Mult ($1000)</p>
+            <button onclick="purchaseMult()" class="floatRight" id="multBuy" hidden="hidden">Buy</button>
+        </div>
+        <div>
+            <p class="floatLeft" id="workerText" hidden="hidden">Purchase Worker ($10000)</p>
+            <button onclick="purchaseWorker()" class="floatRight" id="workerBuy" hidden="hidden">Buy</button>
+        </div>
+        <div>
+            <p class="floatLeft" id="intervalText" hidden="hidden">Purchase Interval Reduction ($100000)</p>
+            <button onclick="purcahseInterval()" class="floatRight" id="intervalBuy" hidden="hidden">Buy</button>
+        </div>
+    </div>
+</div>
+
 </body>
 <script src="script/gameScripts/window.js"></script>
+<script src="script/gameScripts/unlocking.js"></script>
 <script src="script/gameScripts/main.js"></script>
 </html>

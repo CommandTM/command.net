@@ -7,11 +7,15 @@ class Goal(Choice):
     Trophy Mode: Each moon has a rare trophy scrap, the goal is to get all eight
 
     Collectathon: A new rare scrap is added, you need to collect at least ten of it to win
+
+    Credit Hunt: You must receive a number of company credit items as specified by the yaml to win. This can lead to
+    very short or very long games depending on your settings
     """
     display_name = "Game Mode"
     option_trophy = 0
     option_collectathon = 1
-    default = 1
+    option_credit_hunt = 2
+    default = 0
     slot = True
     slot_name = "goal"
 
@@ -270,6 +274,24 @@ class Scrapsanity(Toggle):
     slot_name = "scrapsanity"
 
 
+class ExcludeShotguns(Toggle):
+    """
+    Makes it so there is guaranteed to be a filler item or trap in the shotgun scrapsanity check
+    """
+    display_name = "Exclude Shotguns"
+    slot = True
+    slot_name = "excludeshotguns"
+
+
+class ExcludeHive(Toggle):
+    """
+    Makes it so there is guaranteed to be a filler item or trap in the hive scrapsanity check
+    """
+    display_name = "Exclude Hive"
+    slot = True
+    slot_name = "excludehive"
+
+
 class SplitMoonGrades(Toggle):
     """
     Enables customizing the required grade for easy, medium, and hard moons separately.
@@ -327,17 +349,78 @@ class HighMoonCheckGrade(Choice):
     slot_name = "highMoon"
 
 
+class RandomizeCompanyBuilding(Toggle):
+    """
+    Adds the company building to the item pool
+    """
+    display_name = "Randomize Company Building"
+    slot = True
+    default = 0
+    slot_name = "randomizecompany"
+
+
+class RandomizeTerminal(Toggle):
+    """
+    Adds the terminal to the item pool
+    """
+    display_name = "Randomize Terminal"
+    slot = True
+    default = 0
+    slot_name = "randomizeterminal"
+
+
+class CreditReplacement(Range):
+    """
+    Credit Hunt mode:
+    Replaces the specified percent of filler items with company credits
+    """
+    display_name = "Credit Replacement"
+    range_start = 5
+    range_end = 80
+    default = 50
+
+
+class RequiredCredits(Range):
+    """
+    Credit Hunt mode:
+    The percent of company credits in the pool that are required to beat the game. If there are 20 credits in the pool
+    and you set this to 75, then once 75% of the 20 credits, or 15 credits, are collected, you will win
+    """
+    display_name = "Required Credits"
+    range_start = 10
+    range_end = 100
+    default = 75
+
+
+class ModifyScrapSpawns(Toggle):
+    """
+    Modifies the spawn rates and availability of scrap on every moon to make sure that you are never stuck for a long
+    time trying to find that one specific scrap to unlock your terminal.
+    """
+    display_name = "Modify Scrap Spawns"
+    default = 1
+    slot = True
+    slot_name = "fixscrapsanity"
+
+
 @dataclass
 class LCOptions(PerGameCommonOptions):
     game_mode: Goal
+    collectathon_scrap_goal: CollectathonScrapGoal
+    credit_replacement: CreditReplacement
+    required_credits: RequiredCredits
     checks_per_moon: ChecksPerMoon
     money_per_quota_check: MoneyPerQuotaCheck
     num_quotas: NumQuotas
     starting_inventory_slots: StartingInventorySlots
     starting_stamina_bars: StartingStaminaBars
-    collectathon_scrap_goal: CollectathonScrapGoal
     randomize_scanner: RandomizeScanner
+    randomize_terminal: RandomizeTerminal
+    randomize_company_building: RandomizeCompanyBuilding
     scrapsanity: Scrapsanity
+    exclude_shotgun: ExcludeShotguns
+    exclude_hive: ExcludeHive
+    modify_scrap_spawns: ModifyScrapSpawns
     min_money: MinMoneyCheck
     max_money: MaxMoneyCheck
     starting_moon: StartingMoon

@@ -1,6 +1,35 @@
 Ultrakill.txt
+TUNIC.txt
+Kirby's Dreamland 3.txt
+Celeste 64.txt
+Zork Grand Inquisitor.txt
+Yoshi's Island.txt
+Castlevania 64.txt
+A Short Hike.txt
 A Hat In Time.txt
+Super Mario Land 2.txt
+Mario & Luigi Superstar Saga.txt
+Yu-Gi-Oh! 2006.txt
+Bomb Rush Cyberfunk.txt
 Wario Land 4.txt
+Battle for Bikini Bottom.txt
+Hammerwatch.txt
 Inscryption.txt
+Monster Sanctuary.txt
+Pseudoregalia.txt
+Brotato.txt
+Minit.txt
+Mega Man 2.txt
+Wario Land.txt
+Mario is Missing.txt
+Kingdom Hearts Chain of Memories.txt
+Kingdom Hearts RE Chain Of Memories.txt
 Lethal Company.txt
+Final Fantasy 6 Worlds Collide.txt
+Final Fantasy Tactics Advance.txt
+Fire Emblem Sacred Stones.txt
 Mario Kart 64.txt
+Vacation Simulator.txt
+Resident Evil 2 Remake.txt
+Hades.txt
+Psychonauts.txt

@@ -8,3 +8,38 @@ body {
     background-image: url("../assets/placeholders/miku.gif");
     font-family: Vocaloid;
 }
+
+p {
+    background-color: rgba(0, 206, 209, 0.5);
+    width: fit-content;
+}
+
+h1 {
+    background-color: rgba(0, 206, 209, 0.5);
+    width: fit-content;
+}
+
+h2 {
+    background-color: rgba(0, 206, 209, 0.5);
+    width: fit-content;
+}
+
+h3 {
+    background-color: rgba(0, 206, 209, 0.5);
+    width: fit-content;
+}
+
+h4 {
+    background-color: rgba(0, 206, 209, 0.5);
+    width: fit-content;
+}
+
+h5 {
+    background-color: rgba(0, 206, 209, 0.5);
+    width: fit-content;
+}
+
+h6 {
+    background-color: rgba(0, 206, 209, 0.5);
+    width: fit-content;
+}

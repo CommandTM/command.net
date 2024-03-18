@@ -23,13 +23,15 @@
         <p class="marginRemove" id="moneyDisplay">$</p>
         <p class="marginRemove" id="amountDisplay">Amount:</p>
         <p class="marginRemove" id="multDisplay">Mult:</p>
+        <p id="hSeverityDisplay" class="hackShop" style="color: white" hidden="hidden">Severity:</p>
+        <p id="hImpactDisplay" class="hackShop" style="color: white" hidden="hidden">Impact:</p>
     </div>
 </div>
 
 <div class="window" id="storeWindow" style="left: 500px">
     <div style="width: 300px; height: 10px" class="windowTab" id="storeWindowTab"></div>
     <div style="width: 300px; height: 500px; top: 10px" class="windowContent">
-        <div>
+        <div style="height: 21px">
             <p class="floatLeft">Purchase Amount ($100)</p>
             <button onclick="purchaseAmount()" class="floatRight">Buy</button>
         </div>
@@ -45,6 +47,34 @@
             <p class="floatLeft" id="intervalText" hidden="hidden">Purchase Interval Reduction ($100000)</p>
             <button onclick="purcahseInterval()" class="floatRight" id="intervalBuy" hidden="hidden">Buy</button>
         </div>
+        <div class="hackShop">
+            <p class="hFloatLeft" id="hSeverityText" hidden="hidden">Purchase Hack Severity (£10)</p>
+            <button onclick="purchaseSeverity()" class="floatRight" id="hSeverityBuy" hidden="hidden">Buy</button>
+        </div>
+        <div class="hackShop">
+            <p class="hFloatLeft" id="hImpactText" hidden="hidden">Purchase Hack Impact (£20)</p>
+            <button onclick="purchaseImpact()" class="floatRight" id="hImpactBuy" hidden="hidden">Buy</button>
+        </div>
+    </div>
+</div>
+
+<div class="hackWindow" id="mainHackWindow" style="left: 800px" hidden="hidden">
+    <div style="width: 500px; height: 10px" class="hackTab" id="mainHackWindowTab"></div>
+    <div style="width: 500px; height: 500px; top: 10px" class="hackContent">
+        <h1 id="poundsDisplay">£</h1>
+        <meter value="0" min="0" max="60" class="center" id="hackProgress"></meter>
+        <button onclick="hack()" id="theHackButton">
+            <img src="assets/gameAssets/hackButton.png">
+        </button>
+    </div>
+</div>
+
+<div class="hackWindow" id="cheatWindow" hidden="hidden">
+    <div style="width: 177px; height: 10px" class="hackTab" id="cheatWindowTab"></div>
+    <div style="width: 177px; height: 50px; top: 10px" class="hackContent">
+        <input type="number" id="cheat">
+        <button onclick="cheat(0)" class="floatLeft">Money</button>
+        <button onclick="cheat(1)" class="floatRight">Pounds</button>
     </div>
 </div>
 

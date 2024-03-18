@@ -9,6 +9,7 @@ function dragElement(element){
     obj = element
     var pos1 = 0, pos2 = 0, poss3 = 0, pos4 = 0
     document.getElementById(obj.id + "Tab").onmousedown = dragMouseDown;
+    obj.style.zIndex = "100"
 }
 
 function dragMouseDown(e){
@@ -35,4 +36,5 @@ function elementDrag(e) {
 function closeDragElement(){
     document.onmouseup = null
     document.onmousemove = null
+    obj.style.zIndex = 1
 }

@@ -23,6 +23,37 @@ body {
     margin: 0;
 }
 
+.hackWindow {
+    position: absolute;
+}
+
+.hackTab {
+    cursor: move;
+    position: absolute;
+    background: grey;
+    border: grey;
+}
+
+.hackContent {
+    position: relative;
+    background-color: black;
+    border: black;
+}
+
+.hackContent p {
+    margin: 0;
+    color: white;
+}
+
+.hackContent h1 {
+    margin: 0;
+    color: white;
+}
+
+.hackShop {
+    background: black;
+}
+
 #theBigButton {
     position: relative;
     top: 33.33%;
@@ -44,10 +75,42 @@ body {
     height: 95%;
 }
 
+#theHackButton {
+    position: absolute;
+    top: 175px;
+    left: calc(50% - 75px);
+    background: none;
+    border: none;
+    padding: 0;
+    width: 150px;
+    height: 150px;
+}
+
+#theHackButton img {
+    width: 100%;
+    height: 100%;
+}
+
+#theHackButton:hover img {
+    width: 95%;
+    height: 95%;
+}
+
 .floatLeft {
     float: left;
 }
 
+.hFloatLeft {
+    float: left;
+    color: white;
+}
+
 .floatRight {
     float: right;
+}
+
+.center {
+    position: absolute;
+    left: calc(50% - 40px);
+    top: calc(30% - 8px)
 }

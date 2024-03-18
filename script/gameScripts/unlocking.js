@@ -1,19 +1,11 @@
-function unlockMult(){
-    document.getElementById("multText").hidden = false
-    document.getElementById("multBuy").hidden = false
+function unlock(storeItem){
+    document.getElementById(storeItem + "Text").hidden = false
+    document.getElementById(storeItem + "Buy").hidden = false
+    document.getElementById(storeItem+"Text").parentElement.style.height = "21px"
 }
 
-function unlockWorkers(){
-    document.getElementById("workerText").hidden = false
-    document.getElementById("workerBuy").hidden = false
-}
-
-function unlockInterval(){
-    document.getElementById("intervalText").hidden = false
-    document.getElementById("intervalBuy").hidden = false
-}
-
-function lockInterval(){
-    document.getElementById("intervalText").hidden = true
-    document.getElementById("intervalBuy").hidden = true
+function lock(storeItem) {
+    document.getElementById(storeItem + "Text").hidden = true
+    document.getElementById(storeItem + "Buy").hidden = true
+    document.getElementById(storeItem+"Text").parentElement.style.height = "0px"
 }

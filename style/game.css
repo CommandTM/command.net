@@ -30,7 +30,7 @@ body {
 .hackTab {
     cursor: move;
     position: absolute;
-    background: grey;
+    background: crimson;
     border: grey;
 }
 

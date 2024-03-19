@@ -28,6 +28,14 @@
     </div>
 </div>
 
+<div class="window" id="saveWindow" style="left: 300px; top: 85px">
+    <div style="width: 200px; height: 10px" class="windowTab" id="saveWindowTab"></div>
+    <div style="width: 200px; height: 75px; top: 10px" class="windowContent">
+        <button onclick="save()">Save</button>
+        <button onclick="clearSave()">Clear Save</button>
+    </div>
+</div>
+
 <div class="window" id="storeWindow" style="left: 500px">
     <div style="width: 300px; height: 10px" class="windowTab" id="storeWindowTab"></div>
     <div style="width: 300px; height: 500px; top: 10px" class="windowContent">
@@ -48,12 +56,20 @@
             <button onclick="purcahseInterval()" class="floatRight" id="intervalBuy" hidden="hidden">Buy</button>
         </div>
         <div class="hackShop">
+            <p class="hFloatLeft" id="hackingText" hidden="hidden">Purchase Hacking Software ($100000000000)</p>
+            <button onclick="purchaseHacking()" class="floatRight" id="hackingBuy" hidden="hidden">Buy</button>
+        </div>
+        <div class="hackShop">
             <p class="hFloatLeft" id="hSeverityText" hidden="hidden">Purchase Hack Severity (£10)</p>
             <button onclick="purchaseSeverity()" class="floatRight" id="hSeverityBuy" hidden="hidden">Buy</button>
         </div>
         <div class="hackShop">
             <p class="hFloatLeft" id="hImpactText" hidden="hidden">Purchase Hack Impact (£20)</p>
             <button onclick="purchaseImpact()" class="floatRight" id="hImpactBuy" hidden="hidden">Buy</button>
+        </div>
+        <div class="hackShop">
+            <p class="hFloatLeft" id="hOptimizeText" hidden="hidden">Purchase Hack Optimization (£100)</p>
+            <button onclick="purchaseOptimization()" class="floatRight" id="hOptimizeBuy" hidden="hidden">Buy</button>
         </div>
     </div>
 </div>
@@ -62,10 +78,20 @@
     <div style="width: 500px; height: 10px" class="hackTab" id="mainHackWindowTab"></div>
     <div style="width: 500px; height: 500px; top: 10px" class="hackContent">
         <h1 id="poundsDisplay">£</h1>
+        <select id="targetSelect">
+            <option selected>The Bank</option>
+        </select>
         <meter value="0" min="0" max="60" class="center" id="hackProgress"></meter>
         <button onclick="hack()" id="theHackButton">
             <img src="assets/gameAssets/hackButton.png">
         </button>
+    </div>
+</div>
+
+<div class="hackWindow" id="hackContractsWindow" style="left: 1300px" hidden="hidden">
+    <div style="width: 300px; height: 10px" class="hackTab" id="hackContractsWindowTab"></div>
+    <div style="width: 300px; height: 350px; top: 10px" class="hackContent">
+
     </div>
 </div>
 

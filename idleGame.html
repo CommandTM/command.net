@@ -80,8 +80,9 @@
         <h1 id="poundsDisplay">£</h1>
         <select id="targetSelect">
             <option selected>The Bank</option>
+            <!-- <option>Contract</option> -->
         </select>
-        <meter value="0" min="0" max="60" class="center" id="hackProgress"></meter>
+        <meter value="0" min="0" max="60" id="hackProgress"></meter>
         <button onclick="hack()" id="theHackButton">
             <img src="assets/gameAssets/hackButton.png">
         </button>
@@ -91,7 +92,10 @@
 <div class="hackWindow" id="hackContractsWindow" style="left: 1300px" hidden="hidden">
     <div style="width: 300px; height: 10px" class="hackTab" id="hackContractsWindowTab"></div>
     <div style="width: 300px; height: 350px; top: 10px" class="hackContent">
-
+        <h3 style="float: right" id="contractReward">¥X</h3>
+        <h3 style="text-align: center" id="contractName">CONTRACTNAME</h3>
+        <img src="assets/gameAssets/Elmira Iosue.png" id="contractDisplay">
+        <meter value="0" min="0" max="10" id="contractProgress"></meter>
     </div>
 </div>
 

@@ -45,6 +45,11 @@ body {
     color: white;
 }
 
+.hackContent h3 {
+    margin: 0;
+    color: white;
+}
+
 .hackContent h1 {
     margin: 0;
     color: white;
@@ -96,6 +101,30 @@ body {
     height: 95%;
 }
 
+#hackProgress {
+    position: absolute;
+    left: calc(50% - 40px);
+    top: calc(30% - 8px)
+}
+
+#contractDisplay {
+    position: absolute;
+    left: calc(50% - 105px);
+    top: calc(50% - 105px)
+}
+
+#contractProgress {
+    position: absolute;
+    width: 160px;
+    height: 32px;
+    left: calc(50% - 80px);
+    top: calc(50% + 100px);
+}
+
+meter::-webkit-meter-optimum-value {
+    background-color: crimson;
+}
+
 .floatLeft {
     float: left;
 }
@@ -107,10 +136,4 @@ body {
 
 .floatRight {
     float: right;
-}
-
-.center {
-    position: absolute;
-    left: calc(50% - 40px);
-    top: calc(30% - 8px)
 }

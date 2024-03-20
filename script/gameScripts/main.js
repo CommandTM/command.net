@@ -16,13 +16,22 @@ const hackingPrice = 100000000000
 const severityPrice = 10
 const impactPrice = 20
 const optimizePrice = 100
+const contractBaseMin = 10
+const contractBaseMax = 51
 
 const progressDisplay = document.getElementById("hackProgress")
+const contractProgressDisplay = document.getElementById("contractProgress")
+const employers = ["Coraline Zelpha", "Sha'ul Glinda", "Persis Aladdin", "Elmira Iosue"]
 
 var workInterval
 
+var hacking
 var hackProgress = 0
 var hackInterval
+
+var hasContract = false
+var contractReward = 0
+var contractProgress = 0
 
 /*
 money = hackingPrice
@@ -38,17 +47,48 @@ function increment(){
 }
 
 function hack() {
-    if (hackProgress === 0){
+    if (!hacking){
+        hacking = true
         hackInterval = setInterval(hack, 1000)
         console.log("Starting To Hack")
         hackProgress++
     } else if (hackProgress === progressDisplay.max){
+        hacking = false
         clearInterval(hackInterval)
         hackProgress = 0
         pounds += (severity*impact)
     } else {
+        /*
+        if (document.getElementById("targetSelect").selected === "The Bank"){
+            hackProgress++
+        } else if (document.getElementById("targetSelect").selected === "Contract"){
+            contractProgress++
+        }
+         */
         hackProgress++
     }
+    checkContract()
+}
+
+function checkContract(){
+    if (hasContract === false){
+        newContract()
+    }
+}
+
+function newContract(){
+    hasContract = true
+    let contractName = employers.at(randInt(0, 3))
+    document.getElementById("contractName").innerText = contractName
+    document.getElementById("contractDisplay").src = "assets/gameAssets/" + contractName + ".png"
+    contractProgress.value = 0
+    contractProgress.max = Math.floor(randInt(contractBaseMin, contractBaseMax))
+    contractReward = Math.floor(contractProgress.max/10)
+    document.getElementById("contractReward").innerText = "¥" + contractReward
+}
+
+function randInt(min, max){
+    return Math.floor(Math.random() * ((max+1)-min)) + min;
 }
 
 function purchaseAmount(){
@@ -168,7 +208,7 @@ function cheat(type){
 
 function save(){
     localStorage.setItem("exists", "yes")
-    localStorage.setItem("version", 1)
+    localStorage.setItem("version", 2)
     localStorage.setItem("money", money)
     localStorage.setItem("amount", amount)
     localStorage.setItem("multUnlocked", !document.getElementById("multText").hidden)
@@ -184,6 +224,7 @@ function save(){
     localStorage.setItem("impact", impact)
     localStorage.setItem("optimization", progressDisplay.max)
     localStorage.setItem("cheating", !document.getElementById("cheatWindow").hidden)
+    localStorage.setItem("hackProgress", hackProgress)
 }
 
 function clearSave(){
@@ -240,6 +281,10 @@ function load(){
 
         for (let i = 0; i < workers; i++){
             document.getElementById("workerDisplay").innerText += "☺"
+        }
+
+        if (parseInt(localStorage.getItem("version")) >= 2){
+            hackProgress = localStorage.getItem("hackProgress")
         }
     }
 }

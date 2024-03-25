@@ -1,12 +1,12 @@
 Ultrakill.txt
 TUNIC.txt
-Kirby's Dreamland 3.txt
+Kirby's Dream Land 3.txt
 Celeste 64.txt
 Zork Grand Inquisitor.txt
 Yoshi's Island.txt
 Castlevania 64.txt
 A Short Hike.txt
-A Hat In Time.txt
+A Hat in Time.txt
 Super Mario Land 2.txt
 Mario & Luigi Superstar Saga.txt
 Yu-Gi-Oh! 2006.txt

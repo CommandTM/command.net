@@ -8,6 +8,8 @@ var pounds = 0
 var severity = 1
 var impact = 1
 
+var yen = 0
+
 const amountPrice = 100
 const multPrice = 1000
 const workerPrice = 10000
@@ -31,7 +33,7 @@ var hackInterval
 
 var hasContract = false
 var contractReward = 0
-var contractProgress = 0
+var contractProgress = document.getElementById("contractProgress")
 
 /*
 money = hackingPrice
@@ -56,7 +58,15 @@ function hack() {
         hacking = false
         clearInterval(hackInterval)
         hackProgress = 0
-        pounds += (severity*impact)
+
+        if (document.getElementById("targetSelect").selectedOptions[0].innerText === "The Bank"){
+            pounds += (severity*impact)
+        }
+
+        if (document.getElementById("targetSelect").selectedOptions[0].innerText === "Contract"){
+            contractProgress.value += (severity*impact)
+            checkContract()
+        }
     } else {
         /*
         if (document.getElementById("targetSelect").selected === "The Bank"){
@@ -67,11 +77,15 @@ function hack() {
          */
         hackProgress++
     }
-    checkContract()
 }
 
 function checkContract(){
     if (hasContract === false){
+        newContract()
+    }
+
+    if (contractProgress.value >= contractProgress.max){
+        yen += contractReward
         newContract()
     }
 }
@@ -82,7 +96,7 @@ function newContract(){
     document.getElementById("contractName").innerText = contractName
     document.getElementById("contractDisplay").src = "assets/gameAssets/" + contractName + ".png"
     contractProgress.value = 0
-    contractProgress.max = Math.floor(randInt(contractBaseMin, contractBaseMax))
+    contractProgress.max = Math.floor(randInt(contractBaseMin*(Math.floor((severity*impact)/4)), contractBaseMax*(Math.floor((severity*impact)/4))))
     contractReward = Math.floor(contractProgress.max/10)
     document.getElementById("contractReward").innerText = "¥" + contractReward
 }
@@ -228,8 +242,10 @@ function save(){
 }
 
 function clearSave(){
-    localStorage.setItem("exists", null)
-    location.reload()
+    if (window.confirm("Are You Sure You Want To Reset Your Save?")){
+        localStorage.setItem("exists", null)
+        location.reload()
+    }
 }
 
 function load(){
@@ -290,6 +306,7 @@ function load(){
 }
 
 setInterval(display, 1)
+setInterval(save, 60000)
 
 const buttonWindow = new Window("buttonWindow");
 const moneyWindow = new Window("moneyWindow")
@@ -300,3 +317,4 @@ const contractsWindow = new Window("hackContractsWindow")
 const saveWindow = new Window("saveWindow")
 
 load()
+checkContract()

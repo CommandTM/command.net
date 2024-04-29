@@ -94,7 +94,7 @@ class OopsAllKnives(Choice):
     option_true = 1
     default = 0
 
-re2roptions = {
+re2r_options = {
     "character": Character,
     "scenario": Scenario,
     "difficulty": Difficulty,

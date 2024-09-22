@@ -1,7 +1,6 @@
 console.log("Ah")
 forbiddenWords = [" the ", " it ", " at ", " as ", " in ", " is ", " a ", " this ", " to "]
 backupImage = "https://i.scdn.co/image/ab67616100005174ba025c8f62612b2ca6bfa375"
-baseAPIURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyARn2GuPpfK7BmSsSJc5QOiW7n6DiKcC_I&cx=f5b040f43f7654331&searchType=image&q="
 
 function generate(){
     document.getElementById("image").innerText = ""
